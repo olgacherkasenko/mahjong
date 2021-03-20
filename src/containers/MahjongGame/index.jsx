@@ -46,7 +46,10 @@ const MahjongGame = ({
     setCardStatus(id);
   };
 
-  const restartGame = () => initializeGameBoard();
+  const restartGame = () => {
+    initializeGameBoard();
+    resetIds();
+  };
 
   useEffect(() => {
     initializeGameBoard();
