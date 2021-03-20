@@ -1,8 +1,9 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
 import classnames from "classnames";
-import { HIDDEN } from "../../constants/cardStatuses";
 import PropTypes from "prop-types";
+
+import { HIDDEN } from "../../constants/cardStatuses";
 
 const useStyles = createUseStyles({
   card: {

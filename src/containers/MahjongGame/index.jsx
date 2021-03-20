@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { createUseStyles } from "react-jss";
+import PropTypes from "prop-types";
+
 import MahjongCard from "../../components/MahjongCard";
 import {
   initializeGameBoard,
@@ -9,13 +11,21 @@ import {
   setCardStatus,
   compareCards,
 } from "../../store/game/actions";
-import PropTypes from "prop-types";
 
 const useStyles = createUseStyles({
   gameWrapper: {
     display: "grid",
     gridTemplateColumns: "repeat(10, 64px)",
     gridRowGap: "1em",
+  },
+  button: {
+    background: "#fff",
+    outline: "none",
+    padding: 7,
+    marginTop: 20,
+    border: "1px solid rgba(0, 0, 0, 0.7)",
+    borderRadius: 10,
+    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
   },
 });
 
@@ -31,14 +41,16 @@ const MahjongGame = ({
 }) => {
   const styles = useStyles();
 
-  useEffect(() => {
-    initializeGameBoard();
-  }, []);
-
   const onCardClick = (id) => {
     setActiveCardId(id);
     setCardStatus(id);
   };
+
+  const restartGame = () => initializeGameBoard();
+
+  useEffect(() => {
+    initializeGameBoard();
+  }, []);
 
   useEffect(() => {
     if (previousCardId && activeCardId) {
@@ -48,11 +60,20 @@ const MahjongGame = ({
   }, [activeCardId, previousCardId]);
 
   return (
-    <div className={styles.gameWrapper}>
-      {cards.map(({ card, id }) => (
-        <MahjongCard card={card} key={id} onCardClick={() => onCardClick(id)} />
-      ))}
-    </div>
+    <>
+      <div className={styles.gameWrapper}>
+        {cards.map(({ card, id }) => (
+          <MahjongCard
+            card={card}
+            key={id}
+            onCardClick={() => onCardClick(id)}
+          />
+        ))}
+      </div>
+      <button className={styles.button} onClick={restartGame}>
+        Restart game
+      </button>
+    </>
   );
 };
 

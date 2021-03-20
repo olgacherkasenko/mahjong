@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
     alignItems: "center",
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.title}> Mahjong game</p>
+      <p className={styles.title}>Mahjong game</p>
       <MajhongGame />
     </div>
   );

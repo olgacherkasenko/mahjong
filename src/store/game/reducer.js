@@ -20,18 +20,17 @@ const changeCardStatus = (state, action) => {
 
   return [...state.cards];
 };
-const compareCardValues = (state, action) => {
+
+const compareCardValues = (state) => {
   const prevCard = state.cards.find(({ id }) => id === state.previousCardId);
   const currCard = state.cards.find(({ id }) => id === state.activeCardId);
 
   if (prevCard.card.value === currCard.card.value) {
-    currCard.card.status = VISIBLE;
-    prevCard.card.status = VISIBLE;
+    [currCard, prevCard].forEach(({ card }) => (card.status = VISIBLE));
   } else {
     setTimeout(() => {
-      currCard.card.status = HIDDEN;
-      prevCard.card.status = HIDDEN;
-    }, 500);
+      [currCard, prevCard].forEach(({ card }) => (card.status = HIDDEN));
+    }, 10);
   }
   return [...state.cards];
 };
@@ -69,7 +68,7 @@ const gameReducer = (state = initialState, action) => {
     case COMPARE_CARDS: {
       return {
         ...state,
-        cards: compareCardValues(state, action),
+        cards: compareCardValues(state),
       };
     }
     default:
