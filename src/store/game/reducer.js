@@ -21,18 +21,17 @@ const changeCardStatus = (state, action) => {
   return [...state.cards];
 };
 const compareCardValues = (state, action) => {
-  
   const prevCard = state.cards.find(({ id }) => id === state.previousCardId);
   const currCard = state.cards.find(({ id }) => id === state.activeCardId);
-  
+
   if (prevCard.card.value === currCard.card.value) {
     currCard.card.status = VISIBLE;
     prevCard.card.status = VISIBLE;
   } else {
     setTimeout(() => {
-    currCard.card.status = HIDDEN;
-    prevCard.card.status = HIDDEN;
-    }, 1000);
+      currCard.card.status = HIDDEN;
+      prevCard.card.status = HIDDEN;
+    }, 500);
   }
   return [...state.cards];
 };
@@ -50,14 +49,14 @@ const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         activeCardId: action.payload,
-        previousCardId: console.log(state.activeCardId) || state.activeCardId,
+        previousCardId: state.activeCardId,
       };
     }
     case RESET_IDS: {
       return {
         ...state,
-        previousCardId: '',
-        activeCardId: '',
+        previousCardId: "",
+        activeCardId: "",
       };
     }
     case SET_CARD_STATUS: {

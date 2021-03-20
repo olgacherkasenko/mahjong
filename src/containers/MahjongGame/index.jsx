@@ -9,6 +9,7 @@ import {
   setCardStatus,
   compareCards,
 } from "../../store/game/actions";
+import PropTypes from "prop-types";
 
 const useStyles = createUseStyles({
   gameWrapper: {
@@ -18,7 +19,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const MajhongGame = ({
+const MahjongGame = ({
   cards,
   previousCardId,
   activeCardId,
@@ -68,4 +69,19 @@ const mapDispatchToProps = {
   setActiveCardId,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MajhongGame);
+MahjongGame.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      card: PropTypes.shape({}).isRequired,
+    })
+  ).isRequired,
+  previousCardId: PropTypes.string.isRequired,
+  activeCardId: PropTypes.string.isRequired,
+  initializeGameBoard: PropTypes.func.isRequired,
+  resetIds: PropTypes.func.isRequired,
+  setActiveCardId: PropTypes.func.isRequired,
+  setCardStatus: PropTypes.func.isRequired,
+  compareCards: PropTypes.func.isRequired,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MahjongGame);

@@ -1,6 +1,6 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
-import MajhongGame from "./containers/MajhongGame";
+import MajhongGame from "./containers/MahjongGame";
 
 const useStyles = createUseStyles({
   wrapper: {

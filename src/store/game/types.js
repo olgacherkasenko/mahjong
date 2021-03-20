@@ -1,6 +1,6 @@
-export const INITIALIZE_GAME_BOARD = 'INITIALIZE_GAME_BOARD';
-export const GET_CARDS = 'GET_CARDS';
-export const SET_CARD_STATUS = 'SET_CARD_STATUS';
-export const SET_ACTIVE_CARD_ID = 'SET_ACTIVE_CARD_ID';
-export const RESET_IDS = 'RESET_IDS';
-export const COMPARE_CARDS = 'COMPARE_CARDS';
+export const INITIALIZE_GAME_BOARD = "INITIALIZE_GAME_BOARD";
+export const GET_CARDS = "GET_CARDS";
+export const SET_CARD_STATUS = "SET_CARD_STATUS";
+export const SET_ACTIVE_CARD_ID = "SET_ACTIVE_CARD_ID";
+export const RESET_IDS = "RESET_IDS";
+export const COMPARE_CARDS = "COMPARE_CARDS";
