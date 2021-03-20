@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
   gameWrapper: {
     display: "grid",
     gridTemplateColumns: "repeat(10, 64px)",
-    gridRowGap: "1em",
+    gridRowGap: 16,
   },
   button: {
     background: "#fff",
